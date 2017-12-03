@@ -50,6 +50,19 @@ void KalmanFilter::Update(const VectorXd &z) {
     MatrixXd K =  P_ * Ht * Si;
 
     //new state
+    float px = x_(0);
+    float py = x_(1);
+    float vx = x_(2);
+    float vy = x_(3);
+
+    float eps = 0.000001;  // Make sure we don't divide by 0.
+    if (px < eps && py < eps) {
+        px = eps;
+        py = eps;
+    } else if (px < eps) {
+        px = eps;
+    }
+
 
     x_ = x_ + (K * y);
     int x_size = x_.size();
@@ -63,22 +76,30 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
     TODO:
     * update the state by using Extended Kalman Filter equations
     */
-//    float rho = measurement_pack.raw_measurements_[0];
-//    float theta = measurement_pack.raw_measurements_[1];
-//    float rho = z[0];
-//    float theta = z[1];
-//    float rho_dot = z[2];
-//
-//
-//    if (theta > PI)
-//      theta = fmod((theta - PI) , 2*PI) - PI;
-//
-//    if (theta < -PI)
-//      theta = fmod((theta + PI) , 2*PI) + PI;
-//
-//    z << rho * cos(theta),rho * sin(theta), rho_dot;
-//    MatrixXd Hj = Tools ::CalculateJacobian(x_);
-    VectorXd y = z - H_;
+
+    float px = x_(0);
+    float py = x_(1);
+    float vx = x_(2);
+    float vy = x_(3);
+
+    float eps = 0.000001;  // Make sure we don't divide by 0.
+    if (px < eps && py < eps) {
+        px = eps;
+        py = eps;
+    } else if (px < eps) {
+        px = eps;
+    }
+
+    float rho = sqrtf(powf(px, 2) + powf(py, 2));
+    float phi = atan2f(py, px);
+    float rho_dot = (px * vx + py * vy) / rho;
+
+
+    VectorXd hx(3);
+    hx << rho, phi, rho_dot;
+
+    // Intermediate calculations.
+    VectorXd y = z - hx;
     MatrixXd Ht = H_.transpose();
     MatrixXd S = H_ * P_ * Ht + R_;
     MatrixXd Si = S.inverse();
