@@ -7,7 +7,7 @@ using Eigen::MatrixXd;
 using Eigen::VectorXd;
 
 
-const double PI  =3.141592653589793238463;
+const float PI  =3.14159;
 
 
 // Please note that the Eigen library does not initialize 
@@ -77,38 +77,33 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
     * update the state by using Extended Kalman Filter equations
     */
 
-    float px = x_(0);
-    float py = x_(1);
-    float vx = x_(2);
-    float vy = x_(3);
-
     float eps = 0.000001;  // Make sure we don't divide by 0.
-    if (px < eps && py < eps) {
-        px = eps;
-        py = eps;
-    } else if (px < eps) {
-        px = eps;
+
+    float ro = sqrt(x_[0] * x_[0] + x_[1] * x_[1]);
+    float phi = eps;
+    if (fabs(x_[0]) > eps) {
+        phi = atan2(x_[1], x_[0]);
+    }
+    float ro_dot = eps;
+    if (fabs(ro) > eps) {
+        ro_dot = (x_[0] * x_[2] + x_[1] * x_[3]) / ro;
     }
 
-    float rho = sqrtf(powf(px, 2) + powf(py, 2));
-    float phi = atan2f(py, px);
-    float rho_dot = (px * vx + py * vy) / rho;
-
-
     VectorXd hx(3);
-    hx << rho, phi, rho_dot;
+    hx << ro, phi, ro_dot;
 
-    // Intermediate calculations.
     VectorXd y = z - hx;
+
+    y[1] = atan2(sin(y[1]), cos(y[1]));
+
     MatrixXd Ht = H_.transpose();
     MatrixXd S = H_ * P_ * Ht + R_;
     MatrixXd Si = S.inverse();
-    MatrixXd K =  P_ * Ht * Si;
-
-    //new state
+    MatrixXd PHt = P_ * Ht;
+    MatrixXd K = PHt * Si;
 
     x_ = x_ + (K * y);
-    int x_size = x_.size();
+    long x_size = x_.size();
     MatrixXd I = MatrixXd::Identity(x_size, x_size);
     P_ = (I - K * H_) * P_;
 }

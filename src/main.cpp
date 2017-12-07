@@ -73,12 +73,12 @@ int main() {
                         iss >> px;
                         iss >> py;
                         meas_package.raw_measurements_ << px, py;
-                        std::cout << meas_package.raw_measurements_  << std::endl;
+//                        std::cout << meas_package.raw_measurements_  << std::endl;
 
                         iss >> timestamp;
                         meas_package.timestamp_ = timestamp;
 
-                        std::cout << meas_package.timestamp_  << std::endl;
+//                        std::cout << meas_package.timestamp_  << std::endl;
 
                     } else if (sensor_type.compare("R") == 0) {
 
@@ -91,7 +91,7 @@ int main() {
                         iss >> theta;
                         iss >> ro_dot;
                         meas_package.raw_measurements_ << ro, theta, ro_dot;
-                        std::cout << meas_package.raw_measurements_  << std::endl;
+//                        std::cout << meas_package.raw_measurements_  << std::endl;
                         iss >> timestamp;
                         meas_package.timestamp_ = timestamp;
                     }

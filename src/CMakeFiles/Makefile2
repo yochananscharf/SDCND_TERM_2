@@ -54,45 +54,45 @@ RM = /opt/clion-2017.2.3/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/yochanan/Downloads/Udacity/Term_2/CarND-Extended-Kalman-Filter-Project
+CMAKE_SOURCE_DIR = /home/yochanan/Downloads/Udacity/Term_2/CarND-Extended-Kalman-Filter-Project/src
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/yochanan/Downloads/Udacity/Term_2/CarND-Extended-Kalman-Filter-Project/src
 
 #=============================================================================
-# Target rules for target CMakeFiles/ExtendedKF.dir
+# Target rules for target CMakeFiles/src.dir
 
 # All Build rule for target.
-CMakeFiles/ExtendedKF.dir/all:
-	$(MAKE) -f CMakeFiles/ExtendedKF.dir/build.make CMakeFiles/ExtendedKF.dir/depend
-	$(MAKE) -f CMakeFiles/ExtendedKF.dir/build.make CMakeFiles/ExtendedKF.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yochanan/Downloads/Udacity/Term_2/CarND-Extended-Kalman-Filter-Project/src/CMakeFiles --progress-num=1,2,3,4,5 "Built target ExtendedKF"
-.PHONY : CMakeFiles/ExtendedKF.dir/all
+CMakeFiles/src.dir/all:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/depend
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yochanan/Downloads/Udacity/Term_2/CarND-Extended-Kalman-Filter-Project/src/CMakeFiles --progress-num=1,2,3,4,5 "Built target src"
+.PHONY : CMakeFiles/src.dir/all
 
 # Include target in all.
-all: CMakeFiles/ExtendedKF.dir/all
+all: CMakeFiles/src.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/ExtendedKF.dir/rule: cmake_check_build_system
+CMakeFiles/src.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/yochanan/Downloads/Udacity/Term_2/CarND-Extended-Kalman-Filter-Project/src/CMakeFiles 5
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ExtendedKF.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/src.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/yochanan/Downloads/Udacity/Term_2/CarND-Extended-Kalman-Filter-Project/src/CMakeFiles 0
-.PHONY : CMakeFiles/ExtendedKF.dir/rule
+.PHONY : CMakeFiles/src.dir/rule
 
 # Convenience name for target.
-ExtendedKF: CMakeFiles/ExtendedKF.dir/rule
+src: CMakeFiles/src.dir/rule
 
-.PHONY : ExtendedKF
-
-# clean rule for target.
-CMakeFiles/ExtendedKF.dir/clean:
-	$(MAKE) -f CMakeFiles/ExtendedKF.dir/build.make CMakeFiles/ExtendedKF.dir/clean
-.PHONY : CMakeFiles/ExtendedKF.dir/clean
+.PHONY : src
 
 # clean rule for target.
-clean: CMakeFiles/ExtendedKF.dir/clean
+CMakeFiles/src.dir/clean:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/clean
+.PHONY : CMakeFiles/src.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/src.dir/clean
 
 .PHONY : clean
 

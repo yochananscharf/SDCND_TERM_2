@@ -48,24 +48,13 @@ RM = /opt/clion-2017.2.3/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/yochanan/Downloads/Udacity/Term_2/CarND-Extended-Kalman-Filter-Project
+CMAKE_SOURCE_DIR = /home/yochanan/Downloads/Udacity/Term_2/CarND-Extended-Kalman-Filter-Project/src
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/yochanan/Downloads/Udacity/Term_2/CarND-Extended-Kalman-Filter-Project/src
 
 #=============================================================================
 # Targets provided globally by CMake.
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/opt/clion-2017.2.3/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -77,6 +66,17 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/opt/clion-2017.2.3/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named ExtendedKF
+# Target rules for targets named src
 
 # Build rule for target.
-ExtendedKF: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ExtendedKF
-.PHONY : ExtendedKF
+src: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 src
+.PHONY : src
 
 # fast build rule for target.
-ExtendedKF/fast:
-	$(MAKE) -f CMakeFiles/ExtendedKF.dir/build.make CMakeFiles/ExtendedKF.dir/build
-.PHONY : ExtendedKF/fast
+src/fast:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/build
+.PHONY : src/fast
 
 FusionEKF.o: FusionEKF.cpp.o
 
@@ -129,7 +129,7 @@ FusionEKF.o: FusionEKF.cpp.o
 
 # target to build an object file
 FusionEKF.cpp.o:
-	$(MAKE) -f CMakeFiles/ExtendedKF.dir/build.make CMakeFiles/ExtendedKF.dir/FusionEKF.cpp.o
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/FusionEKF.cpp.o
 .PHONY : FusionEKF.cpp.o
 
 FusionEKF.i: FusionEKF.cpp.i
@@ -138,7 +138,7 @@ FusionEKF.i: FusionEKF.cpp.i
 
 # target to preprocess a source file
 FusionEKF.cpp.i:
-	$(MAKE) -f CMakeFiles/ExtendedKF.dir/build.make CMakeFiles/ExtendedKF.dir/FusionEKF.cpp.i
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/FusionEKF.cpp.i
 .PHONY : FusionEKF.cpp.i
 
 FusionEKF.s: FusionEKF.cpp.s
@@ -147,7 +147,7 @@ FusionEKF.s: FusionEKF.cpp.s
 
 # target to generate assembly for a file
 FusionEKF.cpp.s:
-	$(MAKE) -f CMakeFiles/ExtendedKF.dir/build.make CMakeFiles/ExtendedKF.dir/FusionEKF.cpp.s
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/FusionEKF.cpp.s
 .PHONY : FusionEKF.cpp.s
 
 kalman_filter.o: kalman_filter.cpp.o
@@ -156,7 +156,7 @@ kalman_filter.o: kalman_filter.cpp.o
 
 # target to build an object file
 kalman_filter.cpp.o:
-	$(MAKE) -f CMakeFiles/ExtendedKF.dir/build.make CMakeFiles/ExtendedKF.dir/kalman_filter.cpp.o
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/kalman_filter.cpp.o
 .PHONY : kalman_filter.cpp.o
 
 kalman_filter.i: kalman_filter.cpp.i
@@ -165,7 +165,7 @@ kalman_filter.i: kalman_filter.cpp.i
 
 # target to preprocess a source file
 kalman_filter.cpp.i:
-	$(MAKE) -f CMakeFiles/ExtendedKF.dir/build.make CMakeFiles/ExtendedKF.dir/kalman_filter.cpp.i
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/kalman_filter.cpp.i
 .PHONY : kalman_filter.cpp.i
 
 kalman_filter.s: kalman_filter.cpp.s
@@ -174,7 +174,7 @@ kalman_filter.s: kalman_filter.cpp.s
 
 # target to generate assembly for a file
 kalman_filter.cpp.s:
-	$(MAKE) -f CMakeFiles/ExtendedKF.dir/build.make CMakeFiles/ExtendedKF.dir/kalman_filter.cpp.s
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/kalman_filter.cpp.s
 .PHONY : kalman_filter.cpp.s
 
 main.o: main.cpp.o
@@ -183,7 +183,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) -f CMakeFiles/ExtendedKF.dir/build.make CMakeFiles/ExtendedKF.dir/main.cpp.o
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -192,7 +192,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles/ExtendedKF.dir/build.make CMakeFiles/ExtendedKF.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -201,7 +201,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles/ExtendedKF.dir/build.make CMakeFiles/ExtendedKF.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 tools.o: tools.cpp.o
@@ -210,7 +210,7 @@ tools.o: tools.cpp.o
 
 # target to build an object file
 tools.cpp.o:
-	$(MAKE) -f CMakeFiles/ExtendedKF.dir/build.make CMakeFiles/ExtendedKF.dir/tools.cpp.o
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/tools.cpp.o
 .PHONY : tools.cpp.o
 
 tools.i: tools.cpp.i
@@ -219,7 +219,7 @@ tools.i: tools.cpp.i
 
 # target to preprocess a source file
 tools.cpp.i:
-	$(MAKE) -f CMakeFiles/ExtendedKF.dir/build.make CMakeFiles/ExtendedKF.dir/tools.cpp.i
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/tools.cpp.i
 .PHONY : tools.cpp.i
 
 tools.s: tools.cpp.s
@@ -228,7 +228,7 @@ tools.s: tools.cpp.s
 
 # target to generate assembly for a file
 tools.cpp.s:
-	$(MAKE) -f CMakeFiles/ExtendedKF.dir/build.make CMakeFiles/ExtendedKF.dir/tools.cpp.s
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/tools.cpp.s
 .PHONY : tools.cpp.s
 
 # Help Target
@@ -237,9 +237,9 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... ExtendedKF"
+	@echo "... edit_cache"
+	@echo "... src"
 	@echo "... FusionEKF.o"
 	@echo "... FusionEKF.i"
 	@echo "... FusionEKF.s"
